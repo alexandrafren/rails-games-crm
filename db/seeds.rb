@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+console = Console.create(name: "PS4")
+game = Game.create(name: "God of War", release_year: 2018)
+game.consoles << console
+game.save
