@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'users#login'
   resources :reviews
   resources :games, only: [:new, :create, :show, :index]
   resources :users, only: [:show, :new, :create, :delete]
