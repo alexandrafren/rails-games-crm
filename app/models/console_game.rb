@@ -1,0 +1,2 @@
+class ConsoleGame < ApplicationRecord
+end
