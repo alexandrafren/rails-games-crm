@@ -1,0 +1,18 @@
+<%= @user.name %>'s profile!
+
+
+<div class="reviews">
+	<% @user.reviews.each do |r| %>
+		<% g = Game.find(r.game_id) %>
+		<h3> <%=  g.name %>  </h3>
+		<p><%= @user.name %> rated this <%= r.rating %>. Their review is <%= r.content %></p>
+	<% end %>
+	if user page = current_user, Delete This Review
+
+
+
+Most Liked
+
+
+
+Least Liked

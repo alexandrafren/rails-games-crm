@@ -10,7 +10,7 @@ Available On: <% @game.consoles.each do |c| %>
 	<% @game.reviews.each do |r| %>
 		<% sum = sum + r.rating %>
 	<% end %>
-	<%= sum/@game.reviews.count %>
+	<%= sum/@game.reviews.count if @game.reviews.count > 0 %>
 </div>
 
 <div class="review-box">
