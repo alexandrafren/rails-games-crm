@@ -7,8 +7,9 @@
 		<h3> <%=  g.name %>  </h3>
 		<p><%= @user.name %> rated this <%= r.rating %>. Their review is <%= r.content %></p>
 	<% end %>
-	if user page = current_user, Delete This Review
-
+	if user = cureent user delete as an option
+		<%= link_to "Delete This Review", '/games/:id/delete' %>
+	<% end %>
 
 
 Most Liked
