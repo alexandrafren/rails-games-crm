@@ -1,5 +1,8 @@
 <h1><%= @game.name %></h1>
-Release Year:<%= @game.release_year %>
+Release Year:<%= @game.release_year %><br>
+Available On: <% @game.consoles.each do |c| %>
+					<%= c.name %>
+				<% end %>
 
 <div class="avg-rating">
 	<p> Average Rating: </p>
@@ -10,9 +13,13 @@ Release Year:<%= @game.release_year %>
 	<%= sum/@game.reviews.count %>
 </div>
 
+<div class="review-box">
+	<a href="/games/:id/reviews/new">Review This Game</a>
+</div>
+
 <div class="reviews">
 	<% @game.reviews.each do |r| %>
 		<% user = User.find(r.user_id) %>
-		<p><%= user.name %> rates this game <%= r.rating %>. Their review is: <%= r.content %>.</p>
+		<p><%= link_to user.name, user_path(user) %> rates this game <%= r.rating %>. Their review is: <%= r.content %>.</p>
 	<% end %>
 </div>
