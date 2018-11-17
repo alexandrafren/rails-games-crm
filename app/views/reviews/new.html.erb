@@ -2,6 +2,7 @@
 
 <%= form_for @game do |f| %>
   <%= f.fields_for :reviews do |rev| %>
+    <%= rev.hidden_field :game_id %>
     <%= rev.label :rating %>
     <%= rev.text_field :rating %><br>
 
