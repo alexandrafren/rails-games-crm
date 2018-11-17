@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'users#login'
-  resources :reviews
-  resources :games, only: [:new, :create, :show, :index]
+  resources :games, only: [:show] do
+    resources :reviews
+  end
+  resources :games, only: [:new, :create, :index]
   resources :users, only: [:show, :new, :create, :delete]
 
   get 'login', to: 'users#login'
