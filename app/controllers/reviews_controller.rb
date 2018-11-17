@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   def new
     @game = Game.find(params[:game_id])
-    @game.reviews.build
+    @game.reviews.build(user_id: session[:user_id])
   end
 
   def create

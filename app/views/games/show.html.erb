@@ -14,7 +14,7 @@ Available On: <% @game.consoles.each do |c| %>
 </div>
 
 <div class="review-box">
-	<a href="/games/:id/reviews/new">Review This Game</a>
+	<%= link_to "Review This Game", new_game_review_path(@game.id) %>
 </div>
 
 <div class="reviews">
