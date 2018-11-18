@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   #loads login page
   def new
+    if session[:user_id]
+      redirect_to '/games'
+    end
   end
 
   #logs user in
