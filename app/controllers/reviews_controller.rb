@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(rating: params[:review][:rating], game_id: params[:review][:game_id], content: params[:review][:content])
+    @review = Review.new(rating: params[:review][:rating], game_id: params[:review][:game_id], content: params[:review][:content], user_id: session[:user_id])
     if @review.valid?
       review.user_id = session[:user_id]
       review.save

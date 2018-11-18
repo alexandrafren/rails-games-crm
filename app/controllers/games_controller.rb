@@ -13,6 +13,7 @@ class GamesController < ApplicationController
 
 	def create
 		@game = Game.new(games_params)
+		@game.reviews.first.user_id = session[:user_id]
 		if @game.valid?
 			@game.reviews.first.user_id = session[:user_id]
 			@game.save
