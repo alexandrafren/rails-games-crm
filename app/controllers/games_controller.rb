@@ -12,11 +12,14 @@ class GamesController < ApplicationController
 	end
 
 	def create
-		game = Game.create(games_params)
-		game.reviews.first.user_id = session[:user_id]
-		game.save
-		binding.pry
-		redirect_to '/games'
+		@game = Game.new(games_params)
+		if @game.valid?
+			@game.reviews.first.user_id = session[:user_id]
+			@game.save
+			redirect_to '/games'
+		else
+			render :new
+		end
 	end
 
 private
