@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
 private
 	def games_params
-		params.require(:game).permit(:name, :release_year, console_ids:[], reviews_attributes: [:rating], reviews_attributes: [:content])
+		params.require(:game).permit(:name, :release_year, console_ids:[], reviews_attributes: [:content, :rating])
 	end
 
 end
