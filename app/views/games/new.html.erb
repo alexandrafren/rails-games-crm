@@ -1,0 +1,10 @@
+<%= form_for :game do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :release_year %>
+    <%= f.text_field :release_year %><br>
+
+    <%= f.collection_check_boxes :console_ids, Console.all, :id, :name %><br>
+  <%= f.submit %>
+<% end %>
