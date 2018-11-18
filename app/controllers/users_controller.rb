@@ -8,10 +8,14 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		user = User.create(user_params)
-		session[:user_id] = user.id
-		binding.pry
-    redirect_to '/games'
+		@user = User.new(user_params)
+		if @user.valid?
+			@user.save
+			session[:user_id] = user.id
+    	redirect_to '/games'
+		else
+			render :new
+		end
 	end
 
 private
