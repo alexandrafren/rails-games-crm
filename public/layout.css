@@ -16,3 +16,12 @@
 body {
   background-color: #669999;
 }
+
+.columns {
+  display: flex;
+  align-items: center;
+}
+
+.columns div {
+  padding-right: 200px;
+}

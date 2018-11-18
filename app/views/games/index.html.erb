@@ -1,3 +1,11 @@
+<div class="columns">
+	<div>
+<h3>Recently Added Games</h3>
 <% @games.each do |g| %>
-	<%= link_to g.name, game_path(g.id) %>
+	<%= link_to g.name, game_path(g.id) %><br>
 <% end %>
+</div>
+<div>
+<%= link_to "Add a New Game", new_game_path %><br>
+</div>
+</div>
