@@ -4,7 +4,7 @@
     <title>RailsGames</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="/layout.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,9 +12,12 @@
   <body>
     <div class="nav-bar">
       <a href='/'>Home</a>
-      <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-        <input type=submit value='logout'>
+      <% if session[:user_id] %>
+        <a href='/games'>Games</a>
       <% end %>
+        <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+          <input type=submit value='Logout'>
+        <% end %>
     </div>
     <%= yield %>
   </body>
