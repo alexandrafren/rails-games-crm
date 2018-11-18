@@ -5,10 +5,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.create(rating: params[:review][:rating], game_id: params[:review][:game_id], content: params[:review][:content])
-    review.user_id = session[:user_id]
-    review.save
-    redirect_to '/games'
+    @review = Review.new(rating: params[:review][:rating], game_id: params[:review][:game_id], content: params[:review][:content])
+    if @review.valid?
+      review.user_id = session[:user_id]
+      review.save
+      redirect_to '/games'
+    else
+      render :new
+    end
   end
 
 private
