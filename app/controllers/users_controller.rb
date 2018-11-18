@@ -3,18 +3,12 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def login
-		if logged_in?
-			redirect_to '/games'
-		else
-			render :'/users/login'
-		end
+	def new
 	end
 
 	def create
-    user = User.new(user_params)
-    user.save
-    session[:user_id] = user.id
+		user = User.create(user_params)
+		session[:user_id] = user.id
     redirect_to '/games'
 	end
 
@@ -24,6 +18,6 @@ private
 	end
 
 	def user_params
-		params.require(:user).permit(:username, :password)
+		params.require(:user).permit(:name, :password, :password_confirmation)
 	end
 end

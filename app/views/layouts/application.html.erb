@@ -12,7 +12,9 @@
   <body>
     <div class="nav-bar">
       <a href='/'>Home</a>
-      <a href='/user/:id/delete'>Logout</a>
+      <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+        <input type=submit value='logout'>
+      <% end %>
     </div>
     <%= yield %>
   </body>
