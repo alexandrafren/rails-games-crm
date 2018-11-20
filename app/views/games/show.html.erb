@@ -5,12 +5,7 @@ Available On: <% @game.consoles.each do |c| %>
 				<% end %>
 
 <div class="avg-rating">
-	<p> Average Rating: </p>
-	<% sum = 0 %>
-	<% @game.reviews.each do |r| %>
-		<% sum = sum + r.rating %>
-	<% end %>
-	<%= sum/@game.reviews.count if @game.reviews.count > 0 %>
+		Average Rating:<%= @game.average_rating %>
 </div>
 
 <div class="review-box">

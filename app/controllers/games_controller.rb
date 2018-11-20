@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+	helper_method :params
 	def index
 		@games = Game.all
 	end

@@ -8,4 +8,14 @@ class Game < ApplicationRecord
 	validates :release_year, numericality: {less_than_or_equal_to: 2018, message: "release year must be current year or less"}
 	validates :name, :release_year, presence: true
 	validates :name, uniqueness: true
+
+	RATINGS = [1, 2, 3, 4, 5]
+	def average_rating
+		sum = 0
+			self.reviews.each do |r|
+				sum = sum + r.rating
+			end
+		sum/self.reviews.count if self.reviews.count > 0
+	end
+
 end
