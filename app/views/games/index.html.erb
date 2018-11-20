@@ -1,20 +1,30 @@
 <div>
   <p>Filter Games by Average Rating:</p>
   <%= form_tag("/games", method: "get") do %>
-    <%= select_tag "game", options_from_collection_for_select(@games, "average_rating", "average_rating"), include_blank: true%>
+    <select name="game[average_rating]">
+			<option value=''>Please Select</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
 <br>
 
-<% if !params[:game].blank? %>
-	<% @games = [] %>
-	<% Game.all.each do |g| %>
-			<% if g.average_rating == params[:game].to_i %>
+<% if params[:game] %>
+	<% if !params[:game][:average_rating].blank? %>
+		<% @games = [] %>
+		<% Game.all.each do |g| %>
+			<% if g.average_rating == params[:game][:average_rating].to_i %>
 				<% @games << g %>
 			<% end %>
 		<% end %>
+	<% end %>
 <% end %>
+
 
 <h4>Games:</h4>
 <div class="columns">
