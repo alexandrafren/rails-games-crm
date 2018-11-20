@@ -14,9 +14,21 @@ class SessionsController < ApplicationController
     redirect_to '/games'
   end
 
+  def facebook
+    @user = User.find_or_create_by(id: auth['uid']) do |u|
+      u.name = auth['info']['name']
+    end
+    session[:user_id] = @user.id
+    redirect_to '/games'
+  end
+
   def destroy
     session.delete :user_id
     redirect_to '/login'
   end
 
+private
+  def auth
+    request.env['omniauth.auth']
+  end
 end
