@@ -15,7 +15,7 @@
         <a href='/games'>Home</a>
         <%= link_to "Profile", user_path(session[:user_id]) %>
         <%= form_tag ({controller: 'sessions', action: 'destroy'}) do %>
-          <input type=submit value='Logout'>
+          <input type=submit value='Logout' class="nav-bar-submit">
         <% end %>
         <% else %>
           <a href="/users/new">Sign Up</a>
