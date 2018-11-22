@@ -1,8 +1,10 @@
+<div class="show-page">
 <h1><%= @game.name %></h1>
 Release Year:<%= @game.release_year %><br>
 Available On: <% @game.consoles.each do |c| %>
 					<%= c.name %>
 				<% end %>
+
 
 <div class="avg-rating">
 		Average Rating:<%= @game.average_rating %>
@@ -11,6 +13,7 @@ Available On: <% @game.consoles.each do |c| %>
 <div class="review-box">
 	<%= link_to "Review This Game", new_game_review_path(@game) %>
 </div>
+</div>
 
 <div class="reviews">
 	<% @game.reviews.each do |r| %>
@@ -18,3 +21,4 @@ Available On: <% @game.consoles.each do |c| %>
 		<p><%= link_to user.name, user_path(user) %> rates this game <%= r.rating %>. Their review is: <%= r.content %>.</p>
 	<% end %>
 </div>
+

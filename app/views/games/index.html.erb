@@ -27,13 +27,13 @@
 
 
 <h4>Games:</h4>
-<div class="columns">
+<div>
 	<div>
 <% @games.each do |g| %>
 	<%= link_to g.name, game_path(g.id) %><br>
 <% end %>
 </div>
-<div>
+<div class="new-game">
 <%= link_to "Add a New Game", new_game_path %><br>
 </div>
 </div>
