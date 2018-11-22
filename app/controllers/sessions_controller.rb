@@ -8,17 +8,26 @@ class SessionsController < ApplicationController
 
   #logs user in
   def create
-    @user = User.find_by(name: params[:user][:name])
-    return head(:forbidden) unless @user.authenticate(params[:user][:password])
-    session[:user_id] = @user.id
-    redirect_to '/games'
+	if auth_hash = request.env["omniauth.auth"]
+		user = User.find_or_create_by_omniauth(auth_hash)
+		session[:user_id] = user.id
+		redirect_to '/games'
+	else
+   		 @user = User.find_by(name: params[:user][:name])
+    		return head(:forbidden) unless @user.authenticate(params[:user][:password])
+    		session[:user_id] = @user.id
+    		redirect_to '/games'
+	end
   end
 
   def facebook
-    @user = User.find_or_create_by(id: auth['uid']) do |u|
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
+      u.id = User.last.id + 1
     end
+     @user.save
     session[:user_id] = @user.id
+    binding.pry
     redirect_to '/games'
   end
 
