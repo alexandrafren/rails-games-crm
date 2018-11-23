@@ -18,7 +18,6 @@ class GamesController < ApplicationController
 		@game.reviews.first.user_id = session[:user_id]
 		if @game.valid?
 			@game.reviews.first.user_id = session[:user_id]
-			@game.save
 			redirect_to '/games'
 		else
 			render :new

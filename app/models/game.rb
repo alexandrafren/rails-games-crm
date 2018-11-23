@@ -8,6 +8,7 @@ class Game < ApplicationRecord
 	validates :release_year, numericality: {less_than_or_equal_to: 2018, message: "release year must be current year or less"}
 	validates :name, :release_year, presence: true
 	validates :name, uniqueness: true
+	scope :released_before, ->(y) { where("release_year <= ?", y) }
 	
 	def average_rating
 		sum = 0

@@ -14,6 +14,16 @@
 </div>
 <br>
 
+<div>
+  <p>Filter for Games Released Before:</p>
+  <%= form_for("game", method: "get") do |f| %>
+			<%= f.text_field :release_year %>
+      <%= f.submit "Filter" %>
+  <% end %>
+</div>
+<br>
+
+
 <% if params[:game] %>
 	<% if !params[:game][:average_rating].blank? %>
 		<% @games = [] %>
@@ -22,7 +32,9 @@
 				<% @games << g %>
 			<% end %>
 		<% end %>
-	<% end %>
+	<% elsif params[:game][:release_year] %>
+			<% @games = Game.released_before(params[:game][:release_year]) %>
+		<% end %>
 <% end %>
 
 
