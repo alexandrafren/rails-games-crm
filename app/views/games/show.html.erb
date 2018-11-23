@@ -11,7 +11,11 @@ Available On: <% @game.consoles.each do |c| %>
 </div>
 
 <div class="review-box">
-	<%= link_to "Review This Game", new_game_review_path(@game) %>
+	<% if @user.reviews.map { |n| n.game_id == @game.id} %>
+		<%= link_to "Your Review of this Game", user_path(@user) %>
+	<% else %>
+		<%= link_to "Review This Game", new_game_review_path(@game) %>
+	<% end %>
 </div>
 </div>
 

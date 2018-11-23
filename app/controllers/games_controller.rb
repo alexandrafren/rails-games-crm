@@ -5,6 +5,7 @@ class GamesController < ApplicationController
 	end
 
 	def show
+		@user = current_user
 		@game = Game.find(params[:id])
 	end
 

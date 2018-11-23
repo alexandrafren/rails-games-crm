@@ -18,4 +18,12 @@ class User < ApplicationRecord
 		end
 	end
 
+	def most_liked
+		 self.reviews.sort_by { |r| r.rating }.reverse.take(3)
+	end
+
+	def least_liked
+		self.reviews.sort_by { |r| r.rating }.take(3)
+	end
+
 end
