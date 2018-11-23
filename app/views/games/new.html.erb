@@ -1,33 +1,7 @@
-<% if @game.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@game.errors.count, "error") %>
-      prohibited this game from being saved:
-    </h2>
-
-    <ul>
-    <% @game.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: "errors", locals: { form_save: @game } %>
 
 <% if @game.reviews.first != nil%>
-  <% if @game.reviews.first.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@game.reviews.first.errors.count, "error") %>
-        prohibited this review from being saved:
-      </h2>
-
-    <ul>
-    <% @game.reviews.first.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+	<%= render partial: "errors", locals: { form_save: @game.reviews.first } %>
 <% end %>
 
 <%= form_for @game do |f| %>
