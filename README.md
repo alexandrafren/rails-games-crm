@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application allows users to track the video games they've played through ratings and reviews. It also allows them to see the games that other users have played and what their ratings and reviews were. 
 
-Things you may want to cover:
+* Ruby version 2.3.6, Rails version 5.2.1
 
-* Ruby version
+Development
 
-* System dependencies
+After checking out the repo, run bundle install to install dependencies. Run rake db:migrate and rake db:seed, to get the database up and running and load some test data.
 
-* Configuration
+Contributing
 
-* Database creation
+Bug reports and pull requests are welcome on GitHub at https://github.com/'alexandrafren'/nytimesbooks. License
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The application is available as open source under the terms of the MIT License.
