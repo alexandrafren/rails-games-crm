@@ -15,9 +15,9 @@ class GamesController < ApplicationController
 
 	def create
 		@game = Game.new(games_params)
-		@game.reviews.first.user_id = session[:user_id]
+		@game.reviews.first.user_id = current_user.id
 		if @game.valid?
-			@game.reviews.first.user_id = session[:user_id]
+			@game.save
 			redirect_to '/games'
 		else
 			render :new

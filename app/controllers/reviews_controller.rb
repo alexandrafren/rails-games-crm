@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(rating: params[:review][:rating], game_id: params[:review][:game_id], content: params[:review][:content], user_id: session[:user_id])
     if @review.valid?
-      @review.user_id = session[:user_id]
+      @review.user_id = current_user.id
       @review.save
       redirect_to '/games'
     else

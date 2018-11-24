@@ -21,17 +21,6 @@ class SessionsController < ApplicationController
 	end
   end
 
-  def facebook
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.name = auth['info']['name']
-      u.id = User.last.id + 1
-    end
-     @user.save
-    session[:user_id] = @user.id
-    binding.pry
-    redirect_to '/games'
-  end
-
   def destroy
     session.delete :user_id
     redirect_to '/login'
