@@ -21,8 +21,8 @@ Specs:
 
 Confirm:
 
-    The application is pretty DRY
-    Limited logic in controllers
-    Views use helper methods if appropriate
-[X]  Views use partials if appropriate (views utilize a partial for error display)
+[x]   The application is pretty DRY
+[x]   Limited logic in controllers
+[x]   Views use helper methods if appropriate (current_user method)
+[x]  Views use partials if appropriate (views utilize a partial for error display)
 
